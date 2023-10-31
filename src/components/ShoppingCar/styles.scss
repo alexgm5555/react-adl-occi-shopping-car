@@ -1,0 +1,27 @@
+.ShoppingCar-container {
+  position: fixed;
+  right: 0px;
+
+  .img-car {
+    width: 80px;
+  }
+  .dot {
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block;
+    right: 16px;
+    top: 25px;
+    position: absolute;
+    span {
+      margin: 5px;
+      font-size: small;
+    }
+  }
+
+  .total-span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+  }
+}
