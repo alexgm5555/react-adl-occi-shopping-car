@@ -30,6 +30,7 @@ export const SelectedProducts:FC = () => {
     dispatch(sumTotal({
       total: result.toString()
     }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
   
   return (
