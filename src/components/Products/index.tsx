@@ -6,10 +6,11 @@ import { ProductsInterface } from '../../redux/userSlice';
 
 interface props {
   products?: ProductsInterface[];
+  title?: string
   productSelected(products: ProductsInterface): void;
 }
 
-export const Products:FC<props> = ({products, productSelected}) => {
+export const Products:FC<props> = ({products, title, productSelected}) => {
   const handleClick = (product: ProductsInterface)=>{
     productSelected(product);
   };
@@ -21,11 +22,15 @@ export const Products:FC<props> = ({products, productSelected}) => {
           key={product.id}
           onClick={()=>handleClick(product)}
           className='item'
+          title={title}
           data-testid={`item${product.id}`}
         >
           <p> {product.name}</p>
           <p> {product.description}</p>
           <p> ${product.cost}</p>
+          {product.quantity && <p> 
+            Quatity: {product.quantity}
+          </p>}
         </div>
       ))}
     </div>

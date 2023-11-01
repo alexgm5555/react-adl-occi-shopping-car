@@ -12,6 +12,7 @@ export interface ProductsInterface {
   name: string,
   description: string,
   cost: string,
+  quantity?: number,
 }
 
 const initialState: UserInterface = {

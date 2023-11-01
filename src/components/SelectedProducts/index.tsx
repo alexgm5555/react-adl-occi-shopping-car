@@ -21,8 +21,19 @@ export const SelectedProducts:FC = () => {
     }));
   };
 
+  const sortPerQuatity = (arrayOld: ProductsInterface[]) => {
+    const arrayNew: ProductsInterface[] = [];
+    arrayOld.forEach((e: ProductsInterface)=> {
+      const a = data.filter((a: ProductsInterface)=>a.id === e.id);
+      if(!arrayNew.find((b: ProductsInterface)=>b.id === e.id))
+        arrayNew.push({ ...e, quantity: a.length})
+    });
+    return arrayNew;
+  }
+
   useEffect(() => {
-    setProducts(data);
+    setProducts(sortPerQuatity(data));
+    
     let result = 0;
     for (let i in data) {
       result += parseFloat(data[i].cost) ;
@@ -38,6 +49,7 @@ export const SelectedProducts:FC = () => {
       <Products
         products={products}
         productSelected={handleRemoveProduct}
+        title='Remove product'
       />
     </div>
   );

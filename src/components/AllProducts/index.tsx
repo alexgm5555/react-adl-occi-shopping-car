@@ -1,5 +1,5 @@
 import { FC, useEffect, useState }from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import './styles.scss';
 
@@ -10,13 +10,11 @@ import { Products } from '../../components';
 export const AllProducts:FC = () => {
   const [products, setProducts] = useState<ProductsInterface[]>();
   const dispatch =  useDispatch();
-  const data = useSelector((state: any) => state.user.products);
   
   const handleAddProduct = (product: ProductsInterface)=>{
-    if(!data?.find((prod: ProductsInterface) => prod.id === product.id ))
-      dispatch(addProduct({
-        product
-      }));
+    dispatch(addProduct({
+      product
+    }));
   };
 
   useEffect(() => {
@@ -29,6 +27,7 @@ export const AllProducts:FC = () => {
       <Products
         products={products}
         productSelected={handleAddProduct}
+        title='Add product'
       />
     </div>
   );
